@@ -5,7 +5,7 @@ var MooTools = {
 
 function $defined(obj) {
     return (obj != undefined);
-};
+}
 
 function $type(obj) {
     if (!$defined(obj)) return false;
@@ -34,7 +34,7 @@ function $type(obj) {
         }
     }
     return type;
-};
+}
 
 function $merge() {
     var mix = {};
@@ -73,25 +73,25 @@ $native(Function, Array, String, Number);
 
 function $chk(obj) {
     return !!(obj || obj === 0);
-};
+}
 
 function $pick(obj, picked) {
     return $defined(obj) ? obj : picked;
-};
+}
 
 function $random(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
-};
+}
 
 function $time() {
     return new Date().getTime();
-};
+}
 
 function $clear(timer) {
     clearTimeout(timer);
     clearInterval(timer);
     return null;
-};
+}
 var Abstract = function(obj) {
     obj = obj || {};
     obj.extend = $extend;
@@ -114,7 +114,7 @@ if (typeof HTMLElement == 'undefined') {
 HTMLElement.prototype.htmlElement = function() {};
 if (window.ie6) try {
     document.execCommand("BackgroundImageCache", false, true);
-} catch (e) {};
+} catch (e) {}
 var Class = function(properties) {
     var klass = function() {
         return (arguments[0] !== null && this.initialize && $type(this.initialize) == 'function') ? this.initialize.apply(this, arguments) : this;
@@ -295,7 +295,7 @@ Array.each = Array.forEach;
 
 function $A(array) {
     return Array.copy(array);
-};
+}
 
 function $each(iterable, fn, bind) {
     if (iterable && typeof iterable.length == 'number' && $type(iterable) != 'object') {
@@ -303,7 +303,7 @@ function $each(iterable, fn, bind) {
     } else {
         for (var name in iterable) fn.call(bind || iterable, iterable[name], name);
     }
-};
+}
 Array.prototype.test = Array.prototype.contains;
 String.extend({
     test: function(regex, params) {
@@ -399,7 +399,7 @@ Function.extend({
                 return returns();
             } catch (err) {
                 return false;
-            };
+            }
             return returns();
         };
     },
@@ -505,7 +505,7 @@ function $(el) {
     $extend(el, Element.prototype);
     el.htmlElement = function() {};
     return Garbage.collect(el);
-};
+}
 document.getElementsBySelector = document.getElementsByTagName;
 
 function $$() {
@@ -515,18 +515,20 @@ function $$() {
         switch ($type(selector)) {
             case 'element':
                 elements.push(selector);
+                break;
             case 'boolean':
                 break;
             case false:
                 break;
             case 'string':
                 selector = document.getElementsBySelector(selector, true);
+                break;
             default:
                 elements.extend(selector);
         }
     }
     return $$.unique(elements);
-};
+}
 $$.unique = function(array) {
     var elements = [];
     for (var i = 0, l = array.length; i < l; i++) {
@@ -549,7 +551,7 @@ Elements.Multi = function(property) {
             returns = this[i][property].apply(this[i], args);
             if ($type(returns) != 'element') elements = false;
             items.push(returns);
-        };
+        }
         return (elements) ? $$.unique(items) : items;
     };
 };
@@ -1055,7 +1057,7 @@ Element.Methods.Events = {
         if (!this.$events || !this.$events[type]) return this;
         var pos = this.$events[type].keys.indexOf(fn);
         if (pos == -1) return this;
-        var key = this.$events[type].keys.splice(pos, 1)[0];
+     //   var key = this.$events[type].keys.splice(pos, 1)[0];
         var value = this.$events[type].values.splice(pos, 1)[0];
         var custom = Element.Events[type];
         if (custom) {
@@ -1181,15 +1183,15 @@ Elements.extend({
 
 function $E(selector, filter) {
     return ($(filter) || document).getElement(selector);
-};
+}
 
 function $ES(selector, filter) {
     return ($(filter) || document).getElementsBySelector(selector);
-};
+}
 $$.shared = {
     'regexp': /^(\w*|\*)(?:#([\w-]+)|\.([\w-]+))?(?:\[(\w+)(?:([!*^$]?=)["']?([^"'\]]*)["']?)?])?$/,
     'xpath': {
-        getParam: function(items, context, param, i) {
+        getParam: function(items, context, param) {
             var temp = [context.namespaceURI ? 'xhtml:' : '', param[1]];
             if (param[2]) temp.push('[@id="', param[2], '"]');
             if (param[3]) temp.push('[contains(concat(" ", @class, " "), " ', param[3], ' ")]');
@@ -1306,8 +1308,10 @@ Element.extend({
                     if (option.selected) values.push($pick(option.value, option.text));
                 });
                 return (this.multiple) ? values : values[0];
+
             case 'input':
-                if (!(this.checked && ['checkbox', 'radio'].contains(this.type)) && !['hidden', 'text', 'password'].contains(this.type)) break;
+                if (!(this.checked && ['checkbox', 'radio'].contains(this.type)) && !['hidden', 'text', 'password'].contains(this.type)) 
+                break;
             case 'textarea':
                 return this.value;
         }
@@ -1540,7 +1544,7 @@ Fx.Base = new Class({
         return this.stop(end);
     }
 });
-Fx.Base.implement(new Chain, new Events, new Options);
+Fx.Base.implement(new Chain(), new Events(), new Options());
 Fx.CSS = {
     select: function(property, to) {
         if (property.test(/color/i)) return this.Color;
@@ -2039,7 +2043,7 @@ Drag.Base = new Class({
         this.fireEvent('onComplete', this.element);
     }
 });
-Drag.Base.implement(new Events, new Options);
+Drag.Base.implement(new Events(), new Options());
 Element.extend({
     makeResizable: function(options) {
         return new Drag.Base(this, $merge({
@@ -2160,7 +2164,7 @@ var XHR = new Class({
         var status = 0;
         try {
             status = this.transport.status;
-        } catch (e) {};
+        } catch (e) {}
         if (this.options.isSuccess.call(this, status)) this.onSuccess();
         else this.onFailure();
         this.transport.onreadystatechange = Class.empty;
@@ -2197,7 +2201,7 @@ var XHR = new Class({
         $extend(this.headers, this.options.headers);
         for (var type in this.headers) try {
             this.transport.setRequestHeader(type, this.headers[type]);
-        } catch (e) {};
+        } catch (e) {}
         this.fireEvent('onRequest');
         this.transport.send($pick(data, null));
         return this;
@@ -2212,7 +2216,7 @@ var XHR = new Class({
         return this;
     }
 });
-XHR.implement(new Chain, new Events, new Options);
+XHR.implement(new Chain(), new Events(), new Options());
 var Ajax = XHR.extend({
     options: {
         data: null,
@@ -2265,7 +2269,7 @@ var Ajax = XHR.extend({
     getHeader: function(name) {
         try {
             return this.transport.getResponseHeader(name);
-        } catch (e) {};
+        } catch (e) {}
         return null;
     }
 });
@@ -2331,6 +2335,7 @@ var Json = {
                 var string = [];
                 for (var property in obj) string.push(Json.toString(property) + ':' + Json.toString(obj[property]));
                 return '{' + string.join(',') + '}';
+
             case 'number':
                 if (isFinite(obj)) break;
             case false:
@@ -2342,7 +2347,10 @@ var Json = {
         return (($type(str) != 'string') || (secure && !str.test(/^("(\\.|[^"\\\n\r])*?"|[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t])+?$/))) ? null : eval('(' + str + ')');
     }
 };
-Json.Remote = XHR.extend({
+    evaluate: function(str, secure) {
+        return (($type(str) != 'string') || (secure && !str.test(/^("(\\.|[^"\\\n\r])*?"|[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t])+?$/))) ? null : eval('(' + str + ')');
+    }
+ Json.Remote = XHR.extend({
     initialize: function(url, options) {
         this.url = url;
         this.addEvent('onSuccess', this.onComplete);
@@ -2482,7 +2490,7 @@ var Hash = new Class({
 
 function $H(obj) {
     return new Hash(obj);
-};
+}
 Hash.Cookie = Hash.extend({
     initialize: function(name, options) {
         this.name = name;
@@ -2564,11 +2572,11 @@ var Color = new Class({
 
 function $RGB(r, g, b) {
     return new Color([r, g, b], 'rgb');
-};
+}
 
 function $HSB(h, s, b) {
     return new Color([h, s, b], 'hsb');
-};
+}
 Array.extend({
     rgbToHsb: function() {
         var red = this[0],
@@ -2663,7 +2671,7 @@ var Scroller = new Class({
         if (change.y || change.x) this.fireEvent('onChange', [el.scroll.x + change.x, el.scroll.y + change.y]);
     }
 });
-Scroller.implement(new Events, new Options);
+Scroller.implement(new Events(), new Options());
 var Slider = new Class({
     options: {
         onChange: Class.empty,
@@ -2764,8 +2772,8 @@ var Slider = new Class({
         return this.max * step / this.options.steps;
     }
 });
-Slider.implement(new Events);
-Slider.implement(new Options);
+Slider.implement(new Events());
+Slider.implement(new Options());
 var SmoothScroll = Fx.Scroll.extend({
     initialize: function(options) {
         this.parent(window, options);
@@ -2884,7 +2892,7 @@ var Sortables = new Class({
         this.fireEvent('onComplete', this.active);
     }
 });
-Sortables.implement(new Events, new Options);
+Sortables.implement(new Events(), new Options());
 var Tips = new Class({
     options: {
         onShow: function(tip) {
@@ -2990,7 +2998,7 @@ var Tips = new Class({
             var pos = event.page[z] + this.options.offsets[z];
             if ((pos + tip[z] - scroll[z]) > win[z]) pos = event.page[z] - this.options.offsets[z] - tip[z];
             this.toolTip.setStyle(prop[z], pos);
-        };
+        }
     },
     show: function() {
         if (this.options.timeout) this.timer = this.hide.delay(this.options.timeout, this);
@@ -3000,7 +3008,7 @@ var Tips = new Class({
         this.fireEvent('onHide', [this.toolTip]);
     }
 });
-Tips.implement(new Events, new Options);
+Tips.implement(new Events(), new Options());
 var Group = new Class({
     initialize: function() {
         this.instances = $A(arguments);

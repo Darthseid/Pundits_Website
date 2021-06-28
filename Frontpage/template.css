@@ -805,7 +805,7 @@ input.checkbox { /* checkbox */
 .row-search{ height:80px;}
 .row-top-menu{ float:right;}
 
-.content-top{ margin:0 auto; width:960px; padding-top:37px;}
+.content-top{ margin:0 auto; width:1060px; padding-top:37px;}
 
 
 
@@ -921,7 +921,7 @@ input.checkbox { /* checkbox */
 
 /*-------------------------------------footer---*/
 .footer{ height:98px; width:100%; background:url(footer_bg.gif) 50% 100% repeat-x;}
-.foot {width:960px; height:98px; margin:0 auto; position:relative}
+.foot {width:960px; height:98px; margin:0 25%; position:absolute }
 .img-none{ display:none;}
 .small_logo {
 	 height: auto; 

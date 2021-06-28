@@ -556,7 +556,7 @@ function evalScript( i, elem ) {
 }
 
 function now(){
-	return +new Date();
+	return +new Date;
 }
 
 jQuery.extend = jQuery.fn.extend = function() {
@@ -1347,9 +1347,9 @@ jQuery.extend({
 				q = jQuery.data( elem, type, jQuery.makeArray(data) );
 			else if( data )
 				q.push( data );
-	return q;
-		}
 	
+		}
+		return q;
 	},
 
 	dequeue: function( elem, type ){
@@ -1433,7 +1433,7 @@ var Sizzle = function(selector, context, results, seed) {
 		return results;
 	}
 
-	var parts = [], m, set, checkSet, extra, prune = true;
+	var parts = [], m, set, checkSet, check, mode, extra, prune = true;
 	
 	// Reset the position of the chunker regexp (start from head)
 	chunker.lastIndex = 0;
@@ -1488,9 +1488,6 @@ var Sizzle = function(selector, context, results, seed) {
 			if ( pop == null ) {
 				pop = context;
 			}
-				if ( !checkSet ) {
-		throw "Syntax error, unrecognized expression: " + (cur || selector);
-	}
 
 			Expr.relative[ cur ]( checkSet, pop, isXML(context) );
 		}
@@ -1500,7 +1497,9 @@ var Sizzle = function(selector, context, results, seed) {
 		checkSet = set;
 	}
 
-
+	if ( !checkSet ) {
+		throw "Syntax error, unrecognized expression: " + (cur || selector);
+	}
 
 	if ( toString.call(checkSet) === "[object Array]" ) {
 		if ( !prune ) {
@@ -1753,7 +1752,7 @@ var Expr = Sizzle.selectors = {
 				return m ? [m] : [];
 			}
 		},
-		NAME: function(match, context){
+		NAME: function(match, context, isXML){
 			if ( typeof context.getElementsByName !== "undefined" ) {
 				var ret = [], results = context.getElementsByName(match[1]);
 
@@ -2399,7 +2398,7 @@ jQuery.dir = function( elem, dir ){
 	return matched;
 };
 
-jQuery.nth = function(cur, result, dir){
+jQuery.nth = function(cur, result, dir, elem){
 	result = result || 1;
 	var num = 0;
 
@@ -2420,10 +2419,10 @@ jQuery.sibling = function(n, elem){
 
 	return r;
 };
-window.Sizzle = Sizzle;
+
 return;
 
-
+window.Sizzle = Sizzle;
 
 })();
 /*
@@ -2524,7 +2523,7 @@ jQuery.event = {
 		if ( elem.nodeType == 3 || elem.nodeType == 8 )
 			return;
 
-		var events = jQuery.data(elem, "events"), ret;
+		var events = jQuery.data(elem, "events"), ret, index;
 
 		if ( events ) {
 			// Unbind all events for the element
@@ -3091,6 +3090,15 @@ function bindReady(){
 	jQuery.event.add( window, "load", jQuery.ready );
 }
 
+jQuery.each( ("blur,focus,load,resize,scroll,unload,click,dblclick," +
+	"mousedown,mouseup,mousemove,mouseover,mouseout,mouseenter,mouseleave," +
+	"change,select,submit,keydown,keypress,keyup,error").split(","), function(i, name){
+
+	// Handle event binding
+	jQuery.fn[name] = function(fn){
+		return fn ? this.bind(name, fn) : this.trigger(name);
+	};
+});
 
 // Prevent memory leaks in IE
 // And prevent errors on refresh with events like mouseover in other browsers
@@ -3108,7 +3116,7 @@ jQuery( window ).bind( 'unload', function(){
 	var root = document.documentElement,
 		script = document.createElement("script"),
 		div = document.createElement("div"),
-		id = "script" + (new Date()).getTime();
+		id = "script" + (new Date).getTime();
 
 	div.style.display = "none";
 	div.innerHTML = '   <link/><table></table><a href="/a" style="color:red;float:left;opacity:.5;">a</a><select><option>text</option></select><object><param/></object>';
@@ -3727,7 +3735,7 @@ jQuery.extend({
 
 		function add( key, value ){
 			s[ s.length ] = encodeURIComponent(key) + '=' + encodeURIComponent(value);
-		}
+		};
 
 		// If an array was passed in, assume that it is an array
 		// of form elements
@@ -4214,7 +4222,7 @@ else
 jQuery.offset = {
 	initialize: function() {
 		if ( this.initialized ) return;
-		var body = document.body, container = document.createElement('div'), innerDiv, checkDiv,  td, rules, prop, bodyMarginTop = body.style.marginTop,
+		var body = document.body, container = document.createElement('div'), innerDiv, checkDiv, table, td, rules, prop, bodyMarginTop = body.style.marginTop,
 			html = '<div style="position:absolute;top:0;left:0;margin:0;border:5px solid #000;padding:0;width:1px;height:1px;"><div></div></div><table style="position:absolute;top:0;left:0;margin:0;border:5px solid #000;padding:0;width:1px;height:1px;" cellpadding="0" cellspacing="0"><tr><td></td></tr></table>';
 
 		rules = { position: 'absolute', top: 0, left: 0, margin: 0, border: 0, width: '1px', height: '1px', visibility: 'hidden' };
@@ -4251,7 +4259,7 @@ jQuery.offset = {
 
 jQuery.fn.extend({
 	position: function() {
-		var  results;
+		var left = 0, top = 0, results;
 
 		if ( this[0] ) {
 			// Get *real* offsetParent
@@ -4320,6 +4328,8 @@ jQuery.each( ['Left', 'Top'], function(i, name) {
 // Create innerHeight, innerWidth, outerHeight and outerWidth methods
 jQuery.each([ "Height", "Width" ], function(i, name){
 
+	var tl = i ? "Left"  : "Top",  // top or left
+		br = i ? "Right" : "Bottom", // bottom or right
 		lower = name.toLowerCase();
 
 	// innerHeight and innerWidth
@@ -4362,4 +4372,6 @@ jQuery.each([ "Height", "Width" ], function(i, name){
 					// Set the width or height on the element (default to pixels if value is unitless)
 					this.css( type, typeof size === "string" ? size : size + "px" );
 	};
+
+});
 })();

@@ -69,6 +69,6 @@ var JCaption = new Class({
 
 document.caption = null;
 window.addEvent('load', function() {
-	var caption = new JCaption('img.caption')
-	document.caption = caption
+	var caption = new JCaption('img.caption');
+	document.caption = caption;
 });
