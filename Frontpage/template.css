@@ -2,7 +2,7 @@
 /*--------------------------------------body---*/
 body, td, th, div, p, label, input {
 	color:#6b7c8a;
-	font:normal 12px/20px Arial, Helvetica, sans-serif;
+	font:normal 20px Arial, Helvetica, sans-serif;
 }
 input, select, #contact_text {
 	color:#777777;
@@ -41,6 +41,11 @@ padding-bottom: 5px;
 background: url(../../system/images/selector-arrow.png) no-repeat;
 }
 
+.bp 
+{
+padding: 0 0 0 2em;
+}
+
 .tool-text {
 font-size: 100%;
 margin: 0;
@@ -67,7 +72,8 @@ margin: 0;
 
 /*-----------------------------article_settings-*/
 .pagenavcounter{ padding:11px 0;}
-h6 {font:bold 12px Arial, Helvetica, sans-serif;}
+h6 
+{font:bold 12px Arial, Helvetica, sans-serif;}
 
 .article-decor {padding:0px 0px 12px 0px;}
 #contact_text{ height:auto;  overflow:auto; margin:0px 0px 5px 0px; width:90%; font-size:12px;}
@@ -94,14 +100,26 @@ h6 {font:bold 12px Arial, Helvetica, sans-serif;}
 .container ul li, #content .module ul li{ line-height:16px; padding:0 0 0 15px; background:url(link_marker1.gif) 0 6px no-repeat;  font-weight:normal; line-height:22px}
 .container ul li a, #content ul li a:hover, #content .module ul li a, #content .module ul li a:hover{  color:#69a0d2; font-size:12px; line-height:22px; text-decoration:none; font-weight:bold; }
 #content ul li a:hover, #content .module ul li a:hover, .container ul li a:hover{text-decoration:underline !important}
-.container ul li p{ line-height:14px; padding:0;}
+.container ul li p{ line-height:1em; padding:2pt;}
 .container ul li span{ color:#15a5d6; font-style:italic; }
 
+li
+{
+	font-family:Spline Sans, "Times New Roman", Times, serif;
+    font-size:  12pt;
+}
 
 
-
+b
+{
+	font-size:  18pt;
+}
 .top-line { background:url(border3.gif) 0 0 repeat-x; padding:26px 0 0 0;}
 
+iframe
+{
+	position: relative;
+}
 
 
 .img-indent{ margin:0px 20px 0 0 !important;
@@ -131,11 +149,17 @@ h6 {font:bold 12px Arial, Helvetica, sans-serif;}
 	margin-bottom:12px;
 	text-transform:capitalize;
 	line-height:26px;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family:Pushster, "Times New Roman", Times, serif;
 }
 #poll{padding:0 0 0 0;}
 td.contentheading{ font-size:26px; padding:0 0 4px 0; color:#cccccc;  line-height:26px; font-weight:normal;}
-.contentpaneopen p {padding:4px 0px 10px 0px;}
+.contentpaneopen p 
+{
+	padding:4px 0px 10px 0px;
+	font-family:Roboto Condensed, "Times New Roman", Times, serif;
+    font-size:  17px;
+}
+
 .buttonheading	{padding:19px 0 6px 0px;}
 .icon-indent{  padding:2px 0 0 0;}
 .buttonheading img	{ padding:0; margin:3px 16px 0 0; position:relative;}
@@ -206,6 +230,13 @@ div.small				{ /* Written by */
 	color:#fff	
 }
 
+#linkbox
+{
+	font-family:Pushster, "Times New Roman", Times, serif;
+    font-size:  17pt;
+    color: black;
+    padding: 3px;
+}
 
 /*--------------------------------------------------------VM---*/
 #martInfo .button {
@@ -475,7 +506,7 @@ margin:1px 0 0 0px !important;
 padding:2px 0 3px 9px;
 width:151px;
 background:none;
-font-family:Georgia, "Times New Roman", Times, serif
+font-family:Pushster, "Times New Roman", Times, serif
 }
 .search .button	{ width:64px !important;  margin:0 0 0 0  !important; padding:0  !important;}
 .search .button:hover{ text-decoration:underline;}
@@ -569,7 +600,7 @@ ul.menu-nav li a  {
 	position:relative;
 	color:#fff;
 	float:left;
-	font-family:Georgia, "Times New Roman", Times, serif
+	font-family:Pushster, "Times New Roman", Times, serif
 }
 ul.menu-nav li a strong  {
 	height:35px;
@@ -768,6 +799,7 @@ input.checkbox { /* checkbox */
 	position:relative;
 	overflow-x: hidden;
     margin:0; /*Add this*/
+
 }
 
  .header {
@@ -857,14 +889,13 @@ input.checkbox { /* checkbox */
 
 .article-title-text{
 	color:#222;
-	font-size:26px;
+	font-size:40pt;
 	font-weight:bold;
 	position:relative;
-	margin-bottom:12px;
-	margin-top: 40px;
+	margin: 1em;
 	text-transform:capitalize;
-	font-family:Georgia, "Times New Roman", Times, serif;
-	line-height:26px
+	font-family:Pushster, "Times New Roman", Times, serif;
+	line-height:1em;
 }
 .article-title-text a{ 
 	color:#222;
@@ -873,7 +904,7 @@ input.checkbox { /* checkbox */
 	position:relative;
 	margin-bottom:12px;
 	text-transform:capitalize;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family:Pushster, "Times New Roman", Times, serif;
 	text-decoration:underline;
 	line-height:26px
 }
@@ -884,7 +915,7 @@ input.checkbox { /* checkbox */
 	position:relative;
 	margin-bottom:12px;
 	text-transform:capitalize;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family:Pushster, "Times New Roman", Times, serif;
 	text-decoration:none;
 	line-height:26px
 }
@@ -901,7 +932,7 @@ input.checkbox { /* checkbox */
 	position:relative;
 	margin-bottom:22px;
 	text-transform:capitalize;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family:Pushster, "Times New Roman", Times, serif;
 }
 #left h3, #right h3{
 	color:#222;
@@ -910,7 +941,7 @@ input.checkbox { /* checkbox */
 	position:relative;
 	margin-bottom:22px;
 	text-transform:capitalize;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family:Pushster, "Times New Roman", Times, serif;
 }
 .wrapper-box .boxIndent{ padding:0 0 0 0px;  margin-bottom:0}
 .wrapper-box  { padding:0 0 0 0px;  margin-bottom:28px; margin-top: 38px}
@@ -953,8 +984,6 @@ input.checkbox { /* checkbox */
 }
 
 
-
-
 /* Drop-down menu */
 
 .ulwrapper  {
@@ -967,6 +996,8 @@ input.checkbox { /* checkbox */
 	left:0;
 	top:0
 }
+
+
 .footer .ulwrapper {
 	display:none !important	
 }
@@ -985,6 +1016,7 @@ input.checkbox { /* checkbox */
 	font-weight:normal !important;
 	background:none !important;
 	text-transform:none
+	display:block;
 	
  }
  #body .parent .ulwrapper ul li a:hover, #body .active_tab2 > a strong {
@@ -992,13 +1024,15 @@ input.checkbox { /* checkbox */
  }
  .parent .ulwrapper ul li {
  }
-.parent .ulwrapper ul li a strong{ padding:0 0 14px 0 !important;  display:block  !important; font-weight:normal !important;height:1%; text-align:left !important; font-size:13px}
+.parent .ulwrapper ul li a strong{ padding:0 0 14px 0 !important;  display:block !important; font-weight:normal !important;height:1%; text-align:left !important; font-size:13px}
 
 .ulwrapper ul li a{ padding: 0 !important; background:none !important}
 .ulwrapper ul li a:hover{ color:#2a6196 !important; display:block}
-.ulwrapper ul li a:hover strong{ color:#2a6196 !important;  font-weight:normal !important;}
+.ulwrapper ul li a:hover strong{ color:#2a6196 !important; display:block; font-weight:normal !important}
 
-
+.ulwrapper hover {
+	display: block !important
+}
 
 
 /* EOF Drop-down menu */
@@ -1013,21 +1047,92 @@ input.checkbox { /* checkbox */
 	float:left;
 	margin-right:28px !important;
 }
-.cont_art p {
+.cont_art p 
+{
 	padding:0 !important;
 	margin:7px 0 22px 0	
+	font-family:Roboto Condensed, "Times New Roman", Times, serif;
+    font-size:  14px;
 }
 
 
 .col-1 {width:190px; margin-right:45px;}
  .col-2 {width:190px; margin-right:40px;}
  .col-3 {width:184px;}
- .title-5 {padding:12px 45px 0 0; background:url(pic-2.jpg) right 0 no-repeat;}
-.title-6 {padding:12px 45px 0 0; background:url(pic-3.jpg) right 0 no-repeat;}
-.title-7 {padding:12px 45px 0 0; background:url(pic-4.jpg) right 0 no-repeat;}
-.text-1 {line-height:21px}
+ .title-5 {
+ 	padding:12px 45px 0 0; background:url(pic-2.jpg) right 0 no-repeat;
+ 	font-family:Roboto Condensed, "Times New Roman", Times, serif;
+    font-size:  17pt;
+ }
+.title-6 {
+	padding:12px 45px 0 0; background:url(pic-3.jpg) right 0 no-repeat;
+	font-family:Roboto Condensed, "Times New Roman", Times, serif;
+    font-size:  17pt;
+}
+.title-7 {
+	padding:12px 45px 0 0; background:url(pic-4.jpg) right 0 no-repeat;
+	font-family:Roboto Condensed, "Times New Roman", Times, serif;
+    font-size:  17pt;
+}
+.text-1 {
+	line-height:21px
+	font-family:Roboto Condensed, "Times New Roman", Times, serif;
+    font-size:  14px;
+}
 h6 {color:#7098bb; font-size:14px; line-height:21px;}
 .alignright {text-align:right;}
 .link-1 {padding:12px; background:url(marker-2.gif) 0 5px no-repeat;} 
-.tit {background:url(pics.gif) 0 16px repeat-x;font-size:26px;  margin-bottom:20px; color:#222; font-family:Georgia, "Times New Roman", Times, serif; font-weight:bold}
+.tit {background:url(pics.gif) 0 16px repeat-x;font-size:26px;  margin-bottom:20px; color:#222; font-family:Pushster, "Times New Roman", Times, serif; font-weight:bold}
 .tit span {padding-right:32px; background:#f2f2f2;}
+
+.dropbtn 
+{
+  background-color: black;
+  color: white;
+  padding: 16px;
+  font-size: 16pt;
+  border: none;
+  cursor: pointer;
+  font-family:Vujahday Script, "Times New Roman", Times, serif;
+}
+
+.dropdown 
+{
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content 
+{
+  display: none;
+  position: absolute;
+  font-size:  14pt;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-family:Vujahday Script, "Times New Roman", Times, serif;
+}
+
+.dropdown-content a 
+{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover 
+{
+	background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content 
+{
+  display: block;
+}
+
+.dropdown:hover .dropbtn 
+{
+  background-color: #3e8e41;
+}
